@@ -12,7 +12,7 @@ namespace TechJobs.Controllers
         // This is a "static constructor" which can be used
         // to initialize static members of a class
         static ListController() 
-        {
+        { // allows static fields to be initialized without calling regular constructor.
             
             columnChoices.Add("core competency", "Skill");
             columnChoices.Add("employer", "Employer");

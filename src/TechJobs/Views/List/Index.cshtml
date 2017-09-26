@@ -1,4 +1,8 @@
-﻿<h1>@ViewBag.Title</h1>
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<h1>@ViewBag.Title</h1>
 <h2>View All</h2>
 <ul>
     @foreach (KeyValuePair<string, string> column in ViewBag.columns) {

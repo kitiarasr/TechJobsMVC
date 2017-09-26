@@ -6,6 +6,7 @@ namespace TechJobs.Controllers
 {
     public class SearchController : Controller
     {
+      //  [HttpGet]
         public IActionResult Index()
         {
             ViewBag.columns = ListController.columnChoices;
@@ -15,6 +16,27 @@ namespace TechJobs.Controllers
 
         // TODO #1 - Create a Results action method to process 
         // search request and display results
+      //  [HttpPost]
+        public IActionResult Results(string searchType, string searchTerm) //under search i should find something based on category and also based on all.
+        {
+            ViewBag.columns = ListController.columnChoices;
+            if (searchType.Equals("all"))
+            {
+                ViewBag.jobs = JobData.FindAll();
+                ViewBag.title = "All Jobs";
+                return View("Index");
+            }
+
+            else
+            {
+                ViewBag.jobs = JobData.FindByColumnAndValue(searchType, searchTerm);  //if im finding by a criteria, it should show things based on that
+                ViewBag.column = searchType;
+                ViewBag.title = "All " +  ListController.columnChoices[searchType] + " Values";
+                return View("Index");
+            }
+
+            
+        }
 
     }
 }
